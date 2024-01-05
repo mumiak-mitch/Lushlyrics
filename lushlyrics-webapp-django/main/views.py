@@ -96,3 +96,7 @@ def login_view(request):
 def logoutView(request):
   logout(request)
   return redirect('default') 
+
+
+def registerView(request):
+  return render(request, 'signup.html')
