@@ -1,33 +1,46 @@
+# Setup
 
+To get started, follow these steps:
 
-
-## Setup
-
-The first thing to do is to clone the repository:
-
-```sh
-$ git clone https://github.com/mohammedwed/Lushlyrics-insecure.git
-$ cd lushlyrics-webapp-django
-```
-
-Create a virtual environment to install dependencies in and activate it:
+## 1. Clone the repository
 
 ```sh
-$ virtualenv2 --no-site-packages env
-$ source env/bin/activate
+git clone https://github.com/mumiak-mitch/Lushlyrics.git
+cd lushlyrics-webapp-django
 ```
 
-Then install the dependencies:
+### 2. Create and activate a virtual environment
 
 ```sh
-(env)$ pip install -r requirements.txt
+pipenv shell
 ```
-Note the `(env)` in front of the prompt. This indicates that this terminal
-session operates in a virtual environment set up by `virtualenv2`.
 
-Once `pip` has finished downloading the dependencies:
+### 3. Install dependencies
+
 ```sh
-(env)$ cd Lushlyrics-insecure
-(env)$ python manage.py runserver
+pipenv install -r requirements.txt
 ```
-And navigate to `http://127.0.0.1:8000/`.
+
+### 4. Run the development server
+
+```sh
+python manage.py runserver
+```
+
+### 5. Access the application
+
+Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your web browser.
+
+## My contributions
+
+Restrict anonymous access to the Lushlyrics website.
+
+Secure access to the site with authentication and authorization  
+
+Design user-friendly password recovery.
+
+## About the project
+
+I forked the Lushlyrics-insecure repository so that I can contribute to it.
+
+My contributions are as shown above.
