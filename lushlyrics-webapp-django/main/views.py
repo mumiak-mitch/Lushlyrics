@@ -8,6 +8,7 @@ from youtube_search import YoutubeSearch
 import json
 from django.contrib import messages
 from django.contrib.auth import logout
+from .forms import SignUpForm
 # import cardupdate
 
 
@@ -99,4 +100,12 @@ def logoutView(request):
 
 
 def registerView(request):
-  return render(request, 'signup.html')
+  if request.method == 'POST':
+    form = SignUpForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('login') 
+  else:
+    form = SignUpForm()
+
+  return render(request, 'signup.html', {'form': form})

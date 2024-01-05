@@ -3,7 +3,9 @@ from django.db import models
 
 # Create your models here.
 class playlist_user(models.Model):
-    username = models.CharField(max_length=200)
+    username = models.CharField(max_length=200, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=200)
 
     def __str__(self):
         return f'Username = {self.username}, Liked Songs = {list(self.playlist_song_set.all())}'
