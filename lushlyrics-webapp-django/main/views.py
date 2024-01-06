@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 from .models import playlist_user
 from django.urls.base import reverse
 from django.contrib.auth import authenticate,login,logout
@@ -9,6 +10,7 @@ import json
 from django.contrib import messages
 from django.contrib.auth import logout
 from .forms import SignUpForm
+from django.contrib.auth.views import PasswordChangeView
 # import cardupdate
 
 
@@ -109,3 +111,10 @@ def registerView(request):
     form = SignUpForm()
 
   return render(request, 'signup.html', {'form': form})
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy('login')  # Redirect to the 'login' URL after successful password change
+
+    def get_success_url(self):
+        return self.success_url

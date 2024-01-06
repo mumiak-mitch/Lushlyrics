@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'main',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +130,8 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+SITE_ID = 1  # Replace with your actual site id
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For testing, use console backend
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification
