@@ -135,3 +135,18 @@ STATICFILES_DIRS = [
 SITE_ID = 1  # Replace with your actual site id
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For testing, use console backend
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification
+
+
+#For use in production
+# Use the SMTP email backend
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SMTP server settings (replace with your email provider's settings)
+#EMAIL_HOST = 'your-smtp-server.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'your-email@example.com'
+#EMAIL_HOST_PASSWORD = 'your-email-password'
+
+# Default 'from' address for emails sent by Django
+#DEFAULT_FROM_EMAIL = 'webmaster@example.com'
