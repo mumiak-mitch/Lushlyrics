@@ -46,9 +46,3 @@ I forked the Lushlyrics-insecure repository so that I can contribute to it.
 My contributions are as shown above.
 
 A user can access the site and play music even while not logged in but they can't access some features like liked songs unless they are logged in.
-
-### Remaining parts
-
-Database integration.
-
-Email verification during signup.
