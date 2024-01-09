@@ -1,0 +1,86 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128"
+        type="image/x-icon">
+    <meta name="description" itemprop="description"
+        content="Play your playlists and favourites tracks, albums, and artists " />
+    <meta name="keywords"
+        content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services" />
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'formStyle.css' %}">
+    {% endblock %}
+    <title>Youttify</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'default' %}">Youttify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'default' %}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    {% if messages %}
+    {% for message in messages %}
+    <span style="color: #f79862; padding-bottom: 20px; text-align: center;">{{ message }}</span>
+    {% endfor %}
+    {% endif %}
+
+
+    <div class="signup_body">
+        <form class="login_form" method="POST" action="{% url 'login' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="login-username" class="label">
+                Email address or username
+            </label>
+
+            <input type="text" class="form_input" pattern="[A-Za-z0-9.@_-e]+" name="username"
+                placeholder="Email address or username" required>
+            <label for="login-username" class="label">
+                Password
+            </label>
+            <input type="password" class="form_input" name="password" placeholder="Password" required>
+            {% if case %}
+            <span style="color:#f79862;
+                             padding-bottom:20px;
+                             text-align:center;">Username or password invalid</span>
+            {% endif %}
+            <button class='btn btn_log_in' type="submit">Log in</button>
+            <p class='label center-align'><a href="{% url 'password_reset' %}">Forgot Password</a></p>
+            <div class="divider"></div>
+            <p class='label center-align'>Don't have an account?</p>
+            <a class='btn btn_sign_up' href="#">Sign Up for Lushlyrics</a>
+        </form>
+    </div>
+
+</body>
+
+</html>
