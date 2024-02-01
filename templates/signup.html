@@ -4,76 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128" type="image/x-icon">
-<meta name="description" itemprop="description"
-        content="Play your playlists and favourites tracks, albums, and artists" />
+    <link rel="icon"
+        href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128"
+        type="image/x-icon">
+    <meta name="description" itemprop="description"
+        content="Play your playlists and favourites tracks, albums, and artists " />
     <meta name="keywords"
         content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services" />
-    <link rel="stylesheet" href="{% static "formStyle.css" %}">
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'formStyle.css' %}">
+    {% endblock %}
     <title>Youttify</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<script>
-    function checkPassword(form) {
-        const confirm_password = document.getElementById("cpwd");
-        var password = document.getElementById("pwd").value;
-        console.log(password)
-        if (password != confirm_password.value) {
-            confirm_password.setCustomValidity("Password did not match");
-        } else {
-            confirm_password.setCustomValidity("");
-        }
-    }
-</script>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'default' %}">Youttify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'default' %}">Home</a>
+                </li>
 
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                </li>
 
-        <div class="signup_header">
-            <a href="" target="_blank">
-            </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Register</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="login_form" method='POST' enctype="multipart/form-data">
+                    <span class='label signup-title center-align'>Sign up for free to start listening.</span>
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+
+                    <p class='label center-align'>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+                </form>
+            </div>
         </div>
 
-    <div class="signup_body">
-        <form class="login_form" method='POST' enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <span class='label signup-title center-align'>Sign up for free to start listening.</span>
-            <label for="sign-up-username" class="label">
-                What's your name?{% if not username %}
-                <span style="color:#f79862;">Username already exists</span>
-            {% endif %}
-            </label>
-
-            <input type="text" class="form_input" name="username" pattern="[A-Za-z]+" placeholder="Enter your name." required>
-
-
-            <label for="sign-up-email" class="label">
-                What's your email?{% if not email %}
-                <span style="color:#f79862;">Email already exists</span>
-            {% endif %}
-            </label>
-
-            <input type="email" class="form_input" name="email" placeholder="Enter your email." required>
-
-
-            <label for="sign-up-pwd" class="label">
-                Create a password
-            </label>
-            <input type="password" class="form_input" id="pwd" name="password" placeholder="Create a password."
-                required>
-
-            <label for="sign-up-cpwd" class="label">
-                Confirm your password
-            </label>
-            <input type="password" class="form_input" id="cpwd" name="confirm-password" oninput="checkPassword(this)"
-                placeholder="Re-type your password" required>
-
-            <button class='btn btn_log_in' type="submit">Sign up</button>
-            <div class="divider"></div>
-            <p class='label center-align'>Already have an account? <a href="/login">Log in</a>.</p>
-        </form>
     </div>
-
 </body>
 
 </html>

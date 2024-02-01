@@ -2,6 +2,9 @@ from base64 import urlsafe_b64decode
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+
+from main.forms import RegisterForm
 from .models import playlist_user
 from django.urls.base import reverse
 from django.contrib.auth import authenticate,login,logout
@@ -13,6 +16,7 @@ from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.http import urlsafe_base64_decode
+from django.views import generic
 
 # import cardupdate
 
@@ -131,3 +135,9 @@ def password_reset_confirm_view(request, uidb64, token):
     else:
         messages.error(request, 'The password reset link is invalid or has expired.')
         return HttpResponseRedirect(reverse('password_reset'))
+    
+
+class UserRegisterView(generic.CreateView):
+    form_class = RegisterForm
+    template_name = "signup.html"
+    success_url = reverse_lazy('login')

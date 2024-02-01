@@ -49,3 +49,16 @@ A user can access the site and play music even while not logged in but they can'
 ### Users
 
 Admin, Youttify1234
+testing1, yggynvTY56#
+
+### Important
+
+I am not the creator of Lushlyrics, I got the project from Coursera Project Network and my work was to add authentication and authorization to Lushlyrics.
+
+It has helped me to improve skills such as:
+
+Problem solving
+
+Critical thinking
+
+Collaboration
